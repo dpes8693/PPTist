@@ -176,6 +176,7 @@ function genAll(input: any[]) {
 
   input.forEach(slideConfig => {
     const slide = genSlides(slideConfig)
+    console.log(slide)
     ans.push(slide)
   })
 
@@ -231,6 +232,10 @@ const 判斷內容 = ({ text = '' }) => {
 function genElements(slideConfig: any) {
   const ans2: any = []
 
+  if (!Array.isArray(slideConfig)) {
+    throw Error('結構錯誤應該為: [ [{},{},{}] ]')
+  }
+
   slideConfig.forEach((el: any, index: number) => {
     const getImageLeft = (index: number) => {
       if (index === 0) {
@@ -257,7 +262,7 @@ function genElements(slideConfig: any) {
     const elImgExample = {
       id: nanoid(10),
       type: 'image',
-      src: el.imgSrc,
+      src: el?.imgSrc || '',
       width: 244.50339020122482,
       height: 529.1666666666666,
       left: getImageLeft(index),
@@ -265,6 +270,7 @@ function genElements(slideConfig: any) {
       fixedRatio: true,
       rotate: 0
     }
+    const content = el?.text || ''
     const elTxtExample = {
       id: nanoid(10),
       type: 'text',
@@ -275,7 +281,7 @@ function genElements(slideConfig: any) {
       rotate: 0,
       defaultFontName: 'Microsoft Yahei',
       defaultColor: '#333',
-      content: 判斷內容({ text: el.text }), //
+      content: 判斷內容({ text: content}), //
       lineHeight: 1,
       outline: {
         color: '#000',

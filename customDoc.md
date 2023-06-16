@@ -1,5 +1,6 @@
 # 筆記
-
+MOCK注入的入口
+\PPTist\src\store\slides.ts
 创建元素
 PPTist\src\hooks\useCreateElement.ts
 MOCK 放預設PPT
@@ -11,6 +12,8 @@ PPTist\src\views\Editor\ExportDialog\ExportJSON.vue
 type
 PPTist\src\types\slides.ts
 
+剪貼簿
+\PPTist\src\hooks\usePasteTextClipboardData.ts
 
 添加幻灯片
 PPTist\src\views\Editor\Thumbnails\index.vue
