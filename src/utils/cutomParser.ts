@@ -134,45 +134,45 @@ export const slides: Slide[] = [
     }
   }
 ]
-
-function genAll() {
-  const ans: any = []
-  const input = [
-    [
-      {
-        id: 11,
-        text: '',
-        imgSrc: ''
-      },
-      {
-        id: 12,
-        text: '',
-        imgSrc: ''
-      }
-    ],
-    [
-      {
-        id: 1,
-        text: '',
-        imgSrc: ''
-      },
-      {
-        id: 2,
-        text: '',
-        imgSrc: ''
-      },
-      {
-        id: 3,
-        text: '',
-        imgSrc: ''
-      },
-      {
-        id: 4,
-        text: '',
-        imgSrc: ''
-      }
-    ]
+const input = [
+  [
+    {
+      id: 11,
+      text: 'aa',
+      imgSrc: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABjCAYAAABkDAWWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADeSURBVHhe7dExAQAADMOg+TfdyeAJFriFKgArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArgNoe2sb0HpbCSvIAAAAASUVORK5CYII='
+    },
+    {
+      id: 12,
+      text: 'aa',
+      imgSrc: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABjCAYAAABkDAWWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADeSURBVHhe7dExAQAADMOg+TfdyeAJFriFKgArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArgNoe2sb0HpbCSvIAAAAASUVORK5CYII='
+    },
+    {
+      id: 14,
+      text: 'aa',
+      imgSrc: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABjCAYAAABkDAWWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADeSURBVHhe7dExAQAADMOg+TfdyeAJFriFKgArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArgNoe2sb0HpbCSvIAAAAASUVORK5CYII='
+    }
+  ],
+  [
+    {
+      id: 1,
+      text: 'aa',
+      imgSrc: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABjCAYAAABkDAWWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADeSURBVHhe7dExAQAADMOg+TfdyeAJFriFKgArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArgNoe2sb0HpbCSvIAAAAASUVORK5CYII='
+    },
+    {
+      id: 2,
+      text: 'aa',
+      imgSrc: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABjCAYAAABkDAWWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADeSURBVHhe7dExAQAADMOg+TfdyeAJFriFKgArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArgNoe2sb0HpbCSvIAAAAASUVORK5CYII='
+    },
+    {
+      id: 3,
+      text: 'aa',
+      imgSrc: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABjCAYAAABkDAWWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADeSURBVHhe7dExAQAADMOg+TfdyeAJFriFKgArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArgNoe2sb0HpbCSvIAAAAASUVORK5CYII='
+    }
   ]
+]
+// 目前是寫死三個一組
+function genAll(input: any[]) {
+  const ans: any = []
 
   input.forEach(slideConfig => {
     const slide = genSlides(slideConfig)
@@ -229,31 +229,38 @@ const 判斷內容 = ({ text = '' }) => {
 //     }
 //   ],
 function genElements(slideConfig: any) {
-  const ans2: {
-    id: string
-    type: string
-    src?: any
-    width: number
-    height: number
-    left: number
-    top: number
-    fixedRatio?: boolean
-    rotate: number
-    defaultFontName?: string
-    defaultColor?: string
-    content?: any
-    lineHeight?: number
-    outline?: { color: string; width: number; style: string }
-    fill?: string
-  }[] = []
-  slideConfig.forEach((el: any) => {
+  const ans2: any = []
+
+  slideConfig.forEach((el: any, index: number) => {
+    const getImageLeft = (index: number) => {
+      if (index === 0) {
+        return 57.92322834645669
+      }
+      if (index === 1) {
+        return 373.432195975503
+      }
+      if (index === 2) {
+        return 688.9410542432195
+      }
+    }
+    const getTextLeft = (index: number) => {
+      if (index === 0) {
+        return 77.81271872265964
+      }
+      if (index === 1) {
+        return 393.321686351706
+      }
+      if (index === 2) {
+        return 708.8305446194224
+      }
+    }
     const elImgExample = {
       id: nanoid(10),
       type: 'image',
       src: el.imgSrc,
       width: 244.50339020122482,
       height: 529.1666666666666,
-      left: 57.92322834645669,
+      left: getImageLeft(index),
       top: 16.666666666666664,
       fixedRatio: true,
       rotate: 0
@@ -263,7 +270,7 @@ function genElements(slideConfig: any) {
       type: 'text',
       width: 204.72440944881888,
       height: 68.890625,
-      left: 708.8305446194224,
+      left: getTextLeft(index),
       top: 409.517594689385,
       rotate: 0,
       defaultFontName: 'Microsoft Yahei',
@@ -283,6 +290,9 @@ function genElements(slideConfig: any) {
   })
   return ans2
 }
+
+export { input, genAll }
+
 /**
 // src
 // data:image/png;base64,iV
