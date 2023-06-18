@@ -15,6 +15,9 @@ PPTist\src\types\slides.ts
 剪貼簿
 \PPTist\src\hooks\usePasteTextClipboardData.ts
 
+快捷鍵
+\PPTist\src\hooks\useGlobalHotkey.ts
+
 添加幻灯片
 PPTist\src\views\Editor\Thumbnails\index.vue
 ```js

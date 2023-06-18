@@ -26,6 +26,7 @@ export const enum KEYS {
   PAGEUP = 'PAGEUP',
   PAGEDOWN = 'PAGEDOWN',
   F5 = 'F5',
+  DRAWER = 'F7'
 }
 
 export const HOTKEY_DOC = [

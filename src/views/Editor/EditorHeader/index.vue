@@ -77,7 +77,7 @@
       </Dropdown>
       <Dropdown :trigger="['click']">
         <div class="menu-item">
-          <IconHelpcenter /> <span class="text">Custom製作截圖</span>
+          <IconHelpcenter /> <span class="text">製作截圖(快捷鍵=F7)</span>
         </div>
         <template #overlay>
           <Menu>
@@ -125,11 +125,13 @@
     >
       <div>
         <textarea
+          tabindex="0"
           name=""
-          id=""
+          id="customTextArea"
           cols="30"
           rows="10"
           v-model="inputJson"
+          :placeholder="placeHolder"
         ></textarea>
         <button class="btn" @click="handleParseJson">確定匯入</button>
         <button class="btn" @click="inputJson = ''">清除</button>
@@ -141,7 +143,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/store'
 import useScreening from '@/hooks/useScreening'
@@ -188,6 +190,78 @@ const openSelectPanel = () => {
 
 const hotkeyDrawerVisible = ref(false)
 // custom
+const placeHolder = `[
+    [
+        {
+            "id": 11,
+            "text": "aa",
+            "imgSrc": ""
+        }
+    ]
+]`
+import { KEYS } from '@/configs/hotkey'
+
+function getClipboardText() {
+  navigator.clipboard
+    .read()
+    .then(clipboardItems => {
+      if (clipboardItems.length === 0) {
+        console.log('no item')
+        return
+      }
+
+      const clipboardItem = clipboardItems[0]
+      // for (const type of clipboardItem.types) {
+      //   if (type === 'text/plain') {
+      //     clipboardItem
+      //       .getType(type)
+      //       .then(data => {
+      //         return data.text()
+      //       })
+      //       .catch(error => {
+      //         console.error('讀取剪貼簿失敗:', error)
+      //       })
+      //   }
+      // }
+      for (const type of clipboardItem.types) {
+        if (type === 'text/plain') {
+          clipboardItem
+            .getType(type)
+            .then(blob => {
+              return blob.text() // 將 Blob 轉換為文本
+            })
+            .then(text => {
+              inputJson.value = text
+            })
+            .catch(error => {
+              console.error('讀取剪貼簿失敗:', error)
+            })
+          break
+        }
+      }
+    })
+    .catch(error => {
+      console.error('讀取剪貼簿失敗:', error)
+    })
+}
+
+// 快捷键開DRAWER
+const keydownListener = (e: KeyboardEvent) => {
+  const key = e.key.toUpperCase()
+  if (key === KEYS.DRAWER) {
+    hotkeyDrawerVisible2.value = true
+    const area = document.getElementById('customTextArea')
+    if (area) {
+      setTimeout(() => {
+        // 貼上剪貼簿文字
+        const textFromClipboard = getClipboardText()
+        console.log('已成功貼上')
+      }, 100)
+    }
+  }
+}
+onMounted(() => document.addEventListener('keydown', keydownListener))
+onUnmounted(() => document.removeEventListener('keydown', keydownListener))
 
 const hotkeyDrawerVisible2 = ref(false)
 const inputJson = ref('')
