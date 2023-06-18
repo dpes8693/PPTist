@@ -206,7 +206,7 @@ function getClipboardText() {
     .read()
     .then(clipboardItems => {
       if (clipboardItems.length === 0) {
-        console.log('no item')
+        // console.log('no item')
         return
       }
 
@@ -234,14 +234,16 @@ function getClipboardText() {
               inputJson.value = text
             })
             .catch(error => {
-              console.error('讀取剪貼簿失敗:', error)
+              // console.error('讀取剪貼簿失敗:', error)
+              message.warning('讀取剪貼簿失敗')
             })
           break
         }
       }
     })
     .catch(error => {
-      console.error('讀取剪貼簿失敗:', error)
+      // console.error('讀取剪貼簿失敗:', error)
+      message.warning('讀取剪貼簿失敗')
     })
 }
 
@@ -255,7 +257,8 @@ const keydownListener = (e: KeyboardEvent) => {
       setTimeout(() => {
         // 貼上剪貼簿文字
         const textFromClipboard = getClipboardText()
-        console.log('已成功貼上')
+        // console.log('已成功貼上')
+        message.success('已成功貼上')
       }, 100)
     }
   }
@@ -269,7 +272,8 @@ const handleParseJson = () => {
   try {
     const obj = JSON.parse(inputJson.value)
     if (!Array.isArray(obj)) {
-      alert('請使用合法的格式')
+      // alert('請使用合法的格式')
+      message.warning('請使用合法的格式')
       return
     }
     const slideObj = genAll(obj)
@@ -279,21 +283,16 @@ const handleParseJson = () => {
       message.warning('空')
       return
     }
-    console.log('gen', slideObj)
+    // console.log('gen', slideObj)
     addSlidesFromData(slideObj)
     message.success('ok')
   } 
-  catch (error: any) {
-    if (
-      error.message.includes('is not valid JSON') ||
-      error.message.includes('Unexpected end of JSON input')
-    ) {
-      // message.warning('請使用合法的 JSON 格式')
-      alert('請使用合法的 JSON 格式')
-      return
-    }
-    // message.error(error)
-    alert(error)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  catch (error:any) {
+    message.warning(error)
+    // '請使用合法的 JSON 格式'
+    // 'is not valid JSON'
+    // 'Unexpected end of JSON input'
   }
 }
 //

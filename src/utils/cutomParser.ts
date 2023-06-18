@@ -176,7 +176,7 @@ function genAll(input: any[]) {
 
   input.forEach(slideConfig => {
     const slide = genSlides(slideConfig)
-    console.log(slide)
+    // console.log(slide)
     ans.push(slide)
   })
 
